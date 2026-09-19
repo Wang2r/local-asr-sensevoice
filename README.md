@@ -31,6 +31,8 @@ local-asr-sensevoice/
 ├── audio/               # optional local audio; ignored by Git
 ├── output/              # optional local output; ignored by Git
 ├── .gitignore
+├── LICENSE
+├── THIRD_PARTY_LICENSES.md
 └── README.md
 ```
 
@@ -43,13 +45,9 @@ This project is currently targeted at Intel macOS (`x86_64`). It expects:
 - CMake
 - FFmpeg
 
-With Homebrew:
+The build is designed to use the Apple SDK and libc++ toolchain. On an Intel Mac, prefer official prebuilt installers or binaries when available; use Homebrew only when it provides a suitable bottle or no simpler official distribution is available.
 
-```bash
-brew install git cmake ffmpeg
-```
-
-The build uses Apple's libc++ headers from the active macOS SDK. The CMake invocation intentionally unsets `CPPFLAGS`, `CXXFLAGS`, and `SDKROOT` to avoid unrelated global compiler settings interfering with the build.
+The CMake invocation intentionally unsets `CPPFLAGS`, `CXXFLAGS`, and `SDKROOT` to avoid unrelated global compiler settings interfering with the build.
 
 ## First build
 
@@ -86,6 +84,8 @@ models/fsmn-vad.gguf
 ```
 
 The project does not store model files in Git.
+
+Model sources and their licensing are documented in [THIRD_PARTY_LICENSES.md](THIRD_PARTY_LICENSES.md).
 
 ## Batch transcription
 
@@ -152,6 +152,12 @@ patches/001-sensevoice-batch.patch
 ```
 
 The patch is intentionally kept outside the upstream repository. This makes upstream updates explicit: changing the pinned commit is a deliberate maintenance step, and the existing patch should be checked against the new upstream version before adopting it.
+
+## License
+
+Original project material is licensed under the [MIT License](LICENSE).
+
+Third-party source code, model files, and runtime dependencies retain their own licenses. See [THIRD_PARTY_LICENSES.md](THIRD_PARTY_LICENSES.md) for the dependency and attribution map.
 
 ## Notes on Git
 
