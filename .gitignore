@@ -1,0 +1,20 @@
+# Upstream source
+src/
+
+# Local build products
+bin/
+build/
+
+# Model files
+models/
+
+# Runtime data
+audio/
+output/
+
+# macOS
+.DS_Store
+
+# Editor / temporary
+*.swp
+*~
